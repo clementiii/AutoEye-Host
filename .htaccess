@@ -1,6 +1,11 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteBase /
+    
+    # Allow direct access to CSS, JS and image files
+    RewriteRule \.(css|js|png|jpg|jpeg|gif|ico|svg)$ - [L]
+    
+    # For all other requests, if file or directory doesn't exist, route to index.php
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.*)$ index.php [QSA,L]

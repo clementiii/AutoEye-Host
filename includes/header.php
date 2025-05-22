@@ -4,8 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AutoEye - Mathematical Algorithms</title>
-    <link href="/autoeye/css/style.css" rel="stylesheet">
-    <link href="/autoeye/css/bootstrap.min.css" rel="stylesheet">    <style>
+    <!-- Try multiple path options to ensure CSS loads -->
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Fallback inline CSS if external stylesheets fail to load -->
+    <style>
         :root {
             --primary-dark: #121212;
             --primary-black: #1E1E1E;
