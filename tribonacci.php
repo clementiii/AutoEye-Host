@@ -26,16 +26,17 @@
                         echo '<div class="alert alert-danger mt-3">Number must be greater than or equal to 3</div>';
                     } else {
                         $sequence = array();
-                        $a = '0'; 
-                        $b = '1';  
-                        $c = '1';  
+                        $a = 0; 
+                        $b = 1;  
+                        $c = 1;  
                         
                         $sequence[] = $a;
                         $sequence[] = $b;
                         $sequence[] = $c;
                         
                         for ($i = 3; $i < $n; $i++) {
-                            $next = bcadd(bcadd($a, $b), $c);
+                            // Use standard PHP addition instead of bcadd
+                            $next = $a + $b + $c;
                             $sequence[] = $next;
                             $a = $b;
                             $b = $c;

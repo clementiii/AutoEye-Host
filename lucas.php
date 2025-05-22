@@ -25,16 +25,16 @@
                     if ($n < 3) {
                         echo '<div class="alert alert-danger mt-3">Number must be greater than or equal to 3</div>';
                     } else {
-                        // Using BCMath for large numbers (equivalent to BigInteger in Java)
                         $sequence = array();
-                        $a = '2';  // First Lucas number
-                        $b = '1';  // Second Lucas number
+                        $a = 2;  // First Lucas number
+                        $b = 1;  // Second Lucas number
                         
                         $sequence[] = $a;
                         $sequence[] = $b;
                         
                         for ($i = 2; $i < $n; $i++) {
-                            $next = bcadd($a, $b);
+                            // Use standard PHP addition instead of bcadd
+                            $next = $a + $b;
                             $sequence[] = $next;
                             $a = $b;
                             $b = $next;

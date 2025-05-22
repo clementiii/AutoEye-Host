@@ -2,8 +2,8 @@
 
 <div class="row justify-content-center">    <div class="col-md-10">
         <div class="text-center mb-5">
-            <h1 class="display-4" style="color: var(--accent-yellow);">Mathematical Algorithms</h1>
-            <p class="lead" style="color: var(--bright-yellow);">Explore different mathematical concepts and algorithms</p>
+            <h1 class="display-4" style="color: var(--accent-yellow);">Mathematical Algorithms - Automata Compilation</h1>
+            <p class="lead" style="color: var(--bright-yellow);">Made By: Clement Cabus, Miguel Sta.Maria, Diosdado Tempra</p>
         </div>
         <div class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col">

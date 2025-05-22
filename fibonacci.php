@@ -27,14 +27,15 @@
                     } else {
                        
                         $sequence = array();
-                        $a = '0'; 
-                        $b = '1';  
+                        $a = 0; 
+                        $b = 1;  
                         
                         $sequence[] = $a;
                         $sequence[] = $b;
                         
                         for ($i = 2; $i < $n; $i++) {
-                            $next = bcadd($a, $b);
+                            // Use standard PHP addition instead of bcadd
+                            $next = $a + $b;
                             $sequence[] = $next;
                             $a = $b;
                             $b = $next;
