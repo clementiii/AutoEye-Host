@@ -5,8 +5,9 @@
     # Allow direct access to CSS, JS and image files
     RewriteRule \.(css|js|png|jpg|jpeg|gif|ico|svg)$ - [L]
     
-    # For all other requests, if file or directory doesn't exist, route to index.php
+    # Only route non-PHP files that don't exist to index.php
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} !\.php$
     RewriteRule ^(.*)$ index.php [QSA,L]
 </IfModule>

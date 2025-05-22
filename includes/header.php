@@ -187,31 +187,31 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark mb-4">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/autoeye">AutoEye</a>
+            <a class="navbar-brand" href="index.php">AutoEye</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>            <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/autoeye">Home</a>
+                        <a class="nav-link" href="index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/autoeye/collatz.php">Collatz</a>
+                        <a class="nav-link" href="collatz.php">Collatz</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/autoeye/fibonacci.php">Fibonacci</a>
+                        <a class="nav-link" href="fibonacci.php">Fibonacci</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/autoeye/euclidean.php">Euclidean</a>
+                        <a class="nav-link" href="euclidean.php">Euclidean</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/autoeye/tribonacci.php">Tribonacci</a>
+                        <a class="nav-link" href="tribonacci.php">Tribonacci</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/autoeye/lucas.php">Lucas</a>
+                        <a class="nav-link" href="lucas.php">Lucas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/autoeye/pascal.php">Pascal</a>
+                        <a class="nav-link" href="pascal.php">Pascal</a>
                     </li>
                 </ul>
             </div>
