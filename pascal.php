@@ -24,23 +24,77 @@
                     $rows = intval($_POST['rows']);
                     if ($rows < 1) {
                         echo '<div class="alert alert-danger mt-3">Number must be greater than or equal to 1</div>';
-                    } else {                        echo '<div class="mt-4">';
+                    } else {                        
+                        echo '<div class="mt-4">';
                         echo '<h4>Result:</h4>';
-                        $scrollClass = $rows > 15 ? 'result-scroll' : '';
-                        echo '<div class="result-box p-3 bg-light rounded text-monospace ' . $scrollClass . '">';
-                        echo '<div class="pascal-content">'; // Added wrapper for content
-                          for ($i = 0; $i < $rows; $i++) {
-                            echo str_repeat('&nbsp;&nbsp;', $rows - $i - 1);
-                            
+                        echo '<div class="small mb-2">Pascal\'s Triangle with ' . $rows . ' rows (scroll to view all)</div>';
+                        // Always add scrolling capability
+                        echo '<div class="result-box p-3 bg-light rounded text-monospace result-scroll">';
+                        
+                        // Pre-calculate all values to determine maximum width needed
+                        $values = [];
+                        $maxLength = 1; // Track longest number length
+                        
+                        for ($i = 0; $i < $rows; $i++) {
+                            $values[$i] = [];
                             $num = 1;
-                            for ($j = 0; $j <= $i; $j++) {
-
-                                echo $num . str_repeat('&nbsp;&nbsp;&nbsp;', 1);
-                                $num = $num * ($i - $j) / ($j + 1);
+                            $values[$i][0] = $num;
+                            
+                            for ($j = 1; $j <= $i; $j++) {
+                                $num = $num * ($i - $j + 1) / $j;
+                                $values[$i][$j] = $num;
+                                // Keep track of maximum number length
+                                $maxLength = max($maxLength, strlen((string)$num));
                             }
-                            echo '<br>';
                         }
-                          echo '</div>'; // Close pascal-content
+                        
+                        // Find the maximum width needed for each number
+                        $maxDigits = 1;
+                        foreach ($values as $row) {
+                            foreach ($row as $value) {
+                                $displayValue = $value;
+                                if ($value > 999999) {
+                                    $displayValue = sprintf("%.2e", $value);
+                                }
+                                $length = strlen((string)$displayValue);
+                                $maxDigits = max($maxDigits, $length);
+                            }
+                        }
+                        
+                        // Create a plain text representation of the triangle
+                        $triangle = "";
+                        
+                        // Add some extra padding and ensure it's an odd number for symmetry
+                        $cellWidth = $maxDigits + ($maxDigits % 2 == 0 ? 3 : 2);
+                        
+                        for ($i = 0; $i < $rows; $i++) {
+                            // Leading spaces for the triangle shape
+                            $leadingSpaces = str_repeat(' ', ($rows - $i - 1) * ($cellWidth / 2));
+                            $line = $leadingSpaces;
+                            
+                            for ($j = 0; $j <= $i; $j++) {
+                                $number = $values[$i][$j];
+                                
+                                // Format large numbers for display
+                                $displayNumber = $number;
+                                if ($number > 999999) {
+                                    // Use scientific notation for very large numbers
+                                    $displayNumber = sprintf("%.2e", $number);
+                                }
+                                
+                                // Center the number in its cell
+                                $numLength = strlen($displayNumber);
+                                $leftPad = floor(($cellWidth - $numLength) / 2);
+                                $rightPad = $cellWidth - $numLength - $leftPad;
+                                
+                                $line .= str_repeat(' ', $leftPad) . $displayNumber . str_repeat(' ', $rightPad);
+                            }
+                            
+                            $triangle .= $line . "\n";
+                        }
+                        
+                        // Output the triangle as preformatted text
+                        echo '<pre class="pascal-triangle-text">' . $triangle . '</pre>';
                         echo '</div></div>';
                     }
                 }
