@@ -64,12 +64,13 @@
                         // Create a plain text representation of the triangle
                         $triangle = "";
                         
-                        // Add some extra padding and ensure it's an odd number for symmetry
-                        $cellWidth = $maxDigits + ($maxDigits % 2 == 0 ? 3 : 2);
+                        // Add more padding to ensure consistent rendering across environments
+                        $cellWidth = $maxDigits + ($maxDigits % 2 == 0 ? 5 : 4);
                         
                         for ($i = 0; $i < $rows; $i++) {
-                            // Leading spaces for the triangle shape
-                            $leadingSpaces = str_repeat(' ', ($rows - $i - 1) * ($cellWidth / 2));
+                            // Leading spaces for the triangle shape - use more spaces to ensure proper alignment
+                            // Use fixed width for each level to ensure consistent spacing
+                            $leadingSpaces = str_repeat(' ', ($rows - $i - 1) * ceil($cellWidth / 2));
                             $line = $leadingSpaces;
                             
                             for ($j = 0; $j <= $i; $j++) {
