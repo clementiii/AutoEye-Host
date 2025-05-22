@@ -1,4 +1,5 @@
-    </div>    <script src="/autoeye/js/bootstrap.bundle.min.js"></script>
+    </div>    
+    <script src="js/bootstrap.bundle.min.js"></script>
     <script>
         // Form validation
         (function () {
@@ -17,9 +18,14 @@
             });
         })();
 
-        // Add ripple effect to buttons
+        // Add ripple effect to buttons (but don't interfere with form submissions)
         document.querySelectorAll('.btn').forEach(button => {
             button.addEventListener('click', function(e) {
+                // Don't apply ripple effect to submit buttons in forms
+                if (this.type === 'submit' && this.form) {
+                    return; // Let the form submission proceed normally
+                }
+                
                 let x = e.clientX - e.target.offsetLeft;
                 let y = e.clientY - e.target.offsetTop;
                 
