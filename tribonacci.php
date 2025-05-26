@@ -10,9 +10,9 @@
             <div class="card-body">
                 <form method="post" class="needs-validation" novalidate>
                     <div class="mb-3">
-                        <label for="terms" class="form-label">Enter number of terms (minimum 3):</label>
-                        <input type="number" class="form-control" id="terms" name="terms" required min="3" value="<?php echo isset($_POST['terms']) ? htmlspecialchars($_POST['terms']) : ''; ?>">
-                        <div class="invalid-feedback">Please enter a number greater than or equal to 3.</div>
+                        <label for="terms" class="form-label">Enter number of terms (minimum 4):</label>
+                        <input type="number" class="form-control" id="terms" name="terms" required min="4" value="<?php echo isset($_POST['terms']) ? htmlspecialchars($_POST['terms']) : ''; ?>">
+                        <div class="invalid-feedback">Please enter a number greater than or equal to 4.</div>
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary">Calculate</button>
@@ -22,20 +22,17 @@
                 <?php
                 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['terms'])) {
                     $n = intval($_POST['terms']);
-                    if ($n < 3) {
-                        echo '<div class="alert alert-danger mt-3">Number must be greater than or equal to 3</div>';
+                    if ($n < 4) {
+                        echo '<div class="alert alert-danger mt-3">Number must be greater than or equal to 4</div>';
                     } else {
                         $sequence = array();
-                        $a = 0; 
-                        $b = 1;  
-                        $c = 1;  
-                        
+                        $a = 0;
+                        $b = 0;
+                        $c = 1;
                         $sequence[] = $a;
                         $sequence[] = $b;
                         $sequence[] = $c;
-                        
                         for ($i = 3; $i < $n; $i++) {
-                            // Use standard PHP addition instead of bcadd
                             $next = $a + $b + $c;
                             $sequence[] = $next;
                             $a = $b;
